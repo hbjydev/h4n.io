@@ -9,7 +9,7 @@ const Home: NextPage = () => {
         <h1 className="text-7xl font-extrabold tracking-tight">
           👋 Hey. &nbsp; I&apos;m Hayden.
         </h1>
-        <h2 className="text-3xl tracking-tighter text-zinc-500">
+        <h2 className="text-3xl tracking-tight text-zinc-500">
           I&apos;m a DevOps engineer based in Sheffield, UK.
         </h2>
         <h3 className="text-xl text-zinc-500">
