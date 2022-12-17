@@ -13,7 +13,7 @@ const Home: NextPage = () => {
           I&apos;m a DevOps engineer based in Sheffield, UK.
         </h2>
         <h3 className="text-xl text-zinc-500">
-          And a Kubernetes addict, music listener, gamer, etc... You get the
+          ...and a Kubernetes junkie, music listener, gamer, etc... You get the
           picture.
         </h3>
 
