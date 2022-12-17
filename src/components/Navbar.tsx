@@ -80,6 +80,7 @@ const Navbar: React.FC = () => {
             <a
               href="https://hachyderm.io/@hayden"
               className="hover:text-fuchsia-600"
+              rel="me"
             >
               <FaMastodon className="h-5 w-5" />
             </a>
