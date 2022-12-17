@@ -8,6 +8,12 @@ import rehypeFormat from 'rehype-format';
 import rehypeStringify from 'rehype-stringify/lib';
 import rehypeHighlight from 'rehype-highlight';
 
+export type PostFrontmatter = {
+  title: string;
+  date: string;
+  tags?: string[];
+};
+
 const postsDir = 'posts';
 
 export function getAllPostIds() {
@@ -20,6 +26,19 @@ export function getAllPostIds() {
       },
     };
   });
+}
+
+export function getAllPostMeta() {
+  const fileNames = readdirSync(postsDir);
+  const data: { id: string; data: matter.GrayMatterFile<string>["data"] }[] = [];
+
+  for (const name of fileNames) {
+    const filePath = path.join(postsDir, `${name}`);
+    const matterData = matter.read(filePath);
+    data.push({ id: name, data: matterData.data });
+  }
+
+  return data;
 }
 
 export async function getPostData(id: string) {
