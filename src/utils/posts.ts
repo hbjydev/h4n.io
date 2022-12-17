@@ -35,7 +35,10 @@ export function getAllPostMeta() {
   for (const name of fileNames) {
     const filePath = path.join(postsDir, `${name}`);
     const matterData = matter.read(filePath);
-    data.push({ id: name, data: matterData.data });
+    data.push({
+      id: name.replace(/\.md$/, ''),
+      data: matterData.data,
+    });
   }
 
   return data;
