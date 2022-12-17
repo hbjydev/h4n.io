@@ -42,7 +42,10 @@ export function getAllPostMeta() {
     });
   }
 
-  data.sort((o, t) => new Date(t.data['date']).getTime() - new Date(o.data['date']).getTime());
+  data.sort(
+    (o, t) =>
+      new Date(t.data["date"]).getTime() - new Date(o.data["date"]).getTime()
+  );
 
   return data;
 }
