@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { fontFamily: { serif } } = require('tailwindcss/defaultTheme');
 
 /** @type {import('tailwindcss').Config} */
@@ -6,7 +7,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'main': ['var(--h4n-inter)', ...serif],
+        'main': ['Inter', ...serif],
       },
     },
   },

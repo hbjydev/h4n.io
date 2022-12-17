@@ -1,12 +1,12 @@
-import { readdirSync, readFileSync } from 'fs';
-import path from 'path';
-import { unified } from 'unified';
-import matter from 'gray-matter';
-import remarkRehype from 'remark-rehype';
-import remarkParse from 'remark-parse/lib';
-import rehypeFormat from 'rehype-format';
-import rehypeStringify from 'rehype-stringify/lib';
-import rehypeHighlight from 'rehype-highlight';
+import { readdirSync, readFileSync } from "fs";
+import path from "path";
+import { unified } from "unified";
+import matter from "gray-matter";
+import remarkRehype from "remark-rehype";
+import remarkParse from "remark-parse/lib";
+import rehypeFormat from "rehype-format";
+import rehypeStringify from "rehype-stringify/lib";
+import rehypeHighlight from "rehype-highlight";
 
 export type PostFrontmatter = {
   title: string;
@@ -14,7 +14,7 @@ export type PostFrontmatter = {
   tags?: string[];
 };
 
-const postsDir = 'posts';
+const postsDir = "posts";
 
 export function getAllPostIds() {
   const fileNames = readdirSync(postsDir);
@@ -22,7 +22,7 @@ export function getAllPostIds() {
   return fileNames.map((fileName) => {
     return {
       params: {
-        id: fileName.replace(/\.md$/, ''),
+        id: fileName.replace(/\.md$/, ""),
       },
     };
   });
@@ -30,13 +30,14 @@ export function getAllPostIds() {
 
 export function getAllPostMeta() {
   const fileNames = readdirSync(postsDir);
-  const data: { id: string; data: matter.GrayMatterFile<string>["data"] }[] = [];
+  const data: { id: string; data: matter.GrayMatterFile<string>["data"] }[] =
+    [];
 
   for (const name of fileNames) {
     const filePath = path.join(postsDir, `${name}`);
     const matterData = matter.read(filePath);
     data.push({
-      id: name.replace(/\.md$/, ''),
+      id: name.replace(/\.md$/, ""),
       data: matterData.data,
     });
   }
@@ -46,7 +47,7 @@ export function getAllPostMeta() {
 
 export async function getPostData(id: string) {
   const fullPath = path.join(postsDir, `${id}.md`);
-  const fileContents = readFileSync(fullPath, 'utf8');
+  const fileContents = readFileSync(fullPath, "utf8");
 
   const matterResult = matter(fileContents);
 
