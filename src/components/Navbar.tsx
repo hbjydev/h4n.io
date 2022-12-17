@@ -8,14 +8,16 @@ import { useToggle } from "../utils/hooks/useToggle";
 import Link from "next/link";
 import React from "react";
 
-const NavbarLink: React.FC<{ label: string; href: string }> = ({
+const NavbarLink: React.FC<{ label: string; href: string, toggleMenu: () => void }> = ({
   label,
   href,
+  toggleMenu,
 }) => (
   <li>
     <Link
       className="border-fuchsia-600 pb-0.5 hover:border-b hover:text-fuchsia-600"
       href={href}
+      onClick={toggleMenu}
     >
       {label}
     </Link>
@@ -23,10 +25,12 @@ const NavbarLink: React.FC<{ label: string; href: string }> = ({
 );
 
 const Navbar: React.FC = () => {
-  const { on: menuOpen, toggleOn: toggleMenuOpen } = useToggle(false);
+  const { on: menuOpen, toggleOn: toggleMenuOpen, setOn: setMenuOpen } = useToggle(false);
 
   const MenuIcon: React.FC<{ className: string }> = (props) =>
     !menuOpen ? <HiMenu {...props} /> : <HiX {...props} />;
+
+  const setMenuOff = () => setMenuOpen(false);
 
   return (
     <header>
@@ -43,9 +47,9 @@ const Navbar: React.FC = () => {
           {menuOpen ? (
             <div className="backdrop-blue-lg scroll-y fixed left-0 top-[79px] h-fit min-h-[calc(100vh-79px)] w-full bg-white py-4 px-6 shadow-md backdrop-blur-xl">
               <ul className="flex flex-col gap-4 text-lg">
-                <NavbarLink label="Home" href="/" />
-                <NavbarLink label="Posts" href="/posts" />
-                <NavbarLink label="About" href="#" />
+                <NavbarLink label="Home" href="/" toggleMenu={setMenuOff} />
+                <NavbarLink label="Posts" href="/posts" toggleMenu={setMenuOff} />
+                <NavbarLink label="About" href="#" toggleMenu={setMenuOff} />
               </ul>
             </div>
           ) : null}
@@ -60,8 +64,8 @@ const Navbar: React.FC = () => {
             </Link>
 
             <ul className="flex items-baseline gap-x-6 text-zinc-600">
-              <NavbarLink label="Posts" href="/posts" />
-              <NavbarLink label="About" href="#" />
+              <NavbarLink label="Posts" href="/posts" toggleMenu={setMenuOff} />
+              <NavbarLink label="About" href="#" toggleMenu={setMenuOff} />
             </ul>
           </div>
 
