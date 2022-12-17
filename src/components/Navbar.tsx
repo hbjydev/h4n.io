@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
       >
         <div className="container flex items-center justify-between px-6">
           <span className="text-lg font-bold">Hayden Young</span>
-          <button onClick={toggleMenuOpen}>
+          <button onClick={toggleMenuOpen} role="switch" aria-checked={menuOpen}>
             <MenuIcon className="h-6 w-6" />
           </button>
           {menuOpen ? (

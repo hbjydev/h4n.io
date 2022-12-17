@@ -11,10 +11,10 @@ const Home: NextPage = () => {
         <h2 className="text-3xl tracking-tighter text-zinc-500">
           I&apos;m a DevOps engineer based in Sheffield, UK.
         </h2>
-        <h4 className="text-xl text-zinc-500">
+        <h3 className="text-xl text-zinc-500">
           And a Kubernetes addict, music listener, gamer, etc... You get the
           picture.
-        </h4>
+        </h3>
 
         <div className="flex items-center gap-6">
           <button className="rounded-lg bg-fuchsia-600 px-6 py-3 text-white shadow-lg shadow-fuchsia-500 transition-shadow duration-200 hover:shadow-xl hover:shadow-fuchsia-500">
