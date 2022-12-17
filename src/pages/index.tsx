@@ -1,4 +1,5 @@
 import { type NextPage } from "next";
+import Link from "next/link";
 import Layout from "../components/Layout";
 
 const Home: NextPage = () => {
@@ -17,9 +18,9 @@ const Home: NextPage = () => {
         </h3>
 
         <div className="flex items-center gap-6">
-          <button className="rounded-lg bg-fuchsia-600 px-6 py-3 text-white shadow-lg shadow-fuchsia-500 transition-shadow duration-200 hover:shadow-xl hover:shadow-fuchsia-500">
+          <Link href="/posts" className="rounded-lg bg-fuchsia-600 px-6 py-3 text-white shadow-lg shadow-fuchsia-500 transition-shadow duration-200 hover:shadow-xl hover:shadow-fuchsia-500">
             Read what I have to say
-          </button>
+          </Link>
 
           <button className="rounded-lg px-6 py-3 text-zinc-700 shadow-lg transition-shadow duration-200 hover:shadow-xl">
             Look at my About page
