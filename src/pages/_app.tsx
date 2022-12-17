@@ -5,6 +5,7 @@ import "../styles/hljs.css";
 import Navbar from "../components/Navbar";
 import Head from "next/head";
 import "@fontsource/inter/variable.css";
+import { Analytics } from '@vercel/analytics/react';
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
@@ -21,6 +22,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
       <div className="antialised flex min-h-screen flex-col font-main">
         <Navbar />
         <Component {...pageProps} />
+        <Analytics />
       </div>
     </>
   );
