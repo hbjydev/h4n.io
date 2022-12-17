@@ -15,7 +15,7 @@ const NavbarLink: React.FC<{ label: string; href: string, toggleMenu: () => void
 }) => (
   <li>
     <Link
-      className="border-fuchsia-600 pb-0.5 hover:border-b hover:text-fuchsia-600"
+      className="hover:text-zinc-800 text-zinc-500 transition duration-200"
       href={href}
       onClick={toggleMenu}
     >
