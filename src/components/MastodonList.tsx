@@ -1,7 +1,23 @@
-import { Status } from "masto";
+import { Emoji, Status } from "masto";
 import Image from "next/image";
 import React from "react";
 import { trpc } from "../utils/trpc";
+import reactStringReplace from 'react-string-replace';
+
+const emojiShortcode = /(:[^:\s]*(?:::[^:\s]*)*:)/g;
+
+const emojiFromShortcode = (sc: string, emojis: Emoji[]) => {
+  const shortcode = sc.replaceAll(":", "");
+  const emoji = emojis.find(v => v.shortcode == shortcode);
+
+  if (emoji == undefined) {
+    return null;
+  }
+
+  return (
+    <Image alt={emoji.shortcode} src={emoji.url} width={20} height={20} />
+  );
+};
 
 const MastodonList: React.FC = () => {
   const {
@@ -29,10 +45,16 @@ const MastodonList: React.FC = () => {
 }
 
 export const MastodonStatus: React.FC<{ status: Status }> = ({ status }) => {
-  let content = status.content;
+  const { content: statusContent, account, url } = status;
+
+  let content = statusContent;
   if (content.length > 128) {
     content = content.substring(0, 128) + "...";
   }
+
+  const username = reactStringReplace(account.displayName, emojiShortcode, (match, i) => {
+    return emojiFromShortcode(match, account.emojis);
+  });
 
   return (
     <a
@@ -41,32 +63,19 @@ export const MastodonStatus: React.FC<{ status: Status }> = ({ status }) => {
       target="_blank"
       className="grid grid-cols-[42px_auto] w-full py-4 gap-2"
     >
-
-      <a
-        rel="noreferrer"
-        href={status.account.url}
-        target="_blank"
-        className="font-bold"
-      >
-        <Image
-          className="rounded shadow hover:shadow-lg transition duration-200"
-          src={status.account.avatar}
-          alt={`${status.account.username}'s hachyderm.io Avatar`}
-          width={42}
-          height={42}
-          />
-      </a>
+      <Image
+        className="rounded shadow hover:shadow-lg transition duration-200"
+        src={status.account.avatar}
+        alt={`${status.account.username}'s hachyderm.io Avatar`}
+        width={42}
+        height={42}
+      />
 
       <div className="flex flex-col gap-y-2 overflow-hidden">
         <div className="flex justify-between">
-          <a
-            rel="noreferrer"
-            href={status.account.url}
-            target="_blank"
-            className="font-bold"
-          >
-            {status.account.displayName}
-          </a>
+          <span className="font-bold flex items-center gap-x-1">
+            {username as React.ReactNode[]}
+          </span>
           <span className="text-zinc-500">{status.createdAt}</span>
         </div>
 
