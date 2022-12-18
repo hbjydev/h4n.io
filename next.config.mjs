@@ -15,6 +15,11 @@ const config = withAxiom({
     locales: ["en"],
     defaultLocale: "en",
   },
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'media.hachyderm.io' }
+    ],
+  }
 });
 
 export default config;

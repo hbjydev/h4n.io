@@ -7,6 +7,8 @@ import { z } from "zod";
  */
 export const serverSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]),
+  MASTODON_ACCESS_TOKEN: z.string(),
+  MASTODON_ACCOUNT_ID: z.string(),
 });
 
 /**

@@ -1,6 +1,7 @@
 import { type NextPage } from "next";
 import Link from "next/link";
 import Layout from "../components/Layout";
+import MastodonList from "../components/MastodonList";
 
 const Home: NextPage = () => {
   return (
@@ -25,6 +26,11 @@ const Home: NextPage = () => {
           <button className="rounded-lg px-6 py-3 text-zinc-700 shadow-lg transition-shadow duration-200 hover:shadow-xl">
             Look at my About page
           </button>
+        </div>
+
+        <div className="flex flex-col lg:flex-row justify-between gap-x-10">
+          <MastodonList />
+          <MastodonList />
         </div>
       </div>
     </Layout>
