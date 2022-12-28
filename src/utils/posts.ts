@@ -8,6 +8,11 @@ import rehypeFormat from "rehype-format";
 import rehypeStringify from "rehype-stringify/lib";
 import rehypeHighlight from "rehype-highlight";
 
+export type PostData = {
+  id: string;
+  data: matter.GrayMatterFile<string>["data"];
+};
+
 export type PostFrontmatter = {
   title: string;
   date: string;
@@ -30,8 +35,7 @@ export function getAllPostIds() {
 
 export function getAllPostMeta() {
   const fileNames = readdirSync(postsDir);
-  const data: { id: string; data: matter.GrayMatterFile<string>["data"] }[] =
-    [];
+  const data: PostData[] = [];
 
   for (const name of fileNames) {
     const filePath = path.join(postsDir, `${name}`);

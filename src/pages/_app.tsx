@@ -4,7 +4,6 @@ import "../styles/globals.css";
 import "../styles/hljs.css";
 import Navbar from "../components/Navbar";
 import Head from "next/head";
-import "@fontsource/inter/variable.css";
 import { Analytics } from '@vercel/analytics/react';
 
 const MyApp: AppType = ({ Component, pageProps }) => {

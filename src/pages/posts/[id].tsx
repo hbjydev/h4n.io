@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Layout from "../../components/Layout";
 import { getAllPostIds, getPostData } from "../../utils/posts";
 import hljs from "highlight.js";
+import { PageHeader } from "../../components/PageHeader";
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const postData = await getPostData(params?.id as string);
@@ -32,22 +33,20 @@ const Post: NextPage<{ postData: Awaited<ReturnType<typeof getPostData>> }> = ({
   });
 
   return (
-    <Layout title={frontmatter["title"]}>
-      <div className="mx-auto my-10 flex w-full max-w-screen-sm flex-col gap-y-10">
-        <div className="flex flex-col gap-y-4">
-          <h1 className="text-4xl font-bold tracking-tight">
-            {frontmatter["title"]}
-          </h1>
-          <span className="text-lg text-zinc-600">{frontmatter["date"]}</span>
-        </div>
+    <Layout title={frontmatter["title"]} thin hGap={10} className="w-full">
+      <PageHeader
+        title={frontmatter["title"]}
+        subtitle={frontmatter["date"]}
+        bottomGap
+        leftAlign
+      />
 
-        <hr className="border-zinc-200" />
+      <hr className="border-zinc-200" />
 
-        <div
-          className="prose prose-zinc max-w-none prose-pre:bg-zinc-200"
-          dangerouslySetInnerHTML={{ __html: html }}
-        />
-      </div>
+      <div
+        className="prose prose-zinc max-w-none prose-pre:bg-zinc-200"
+        dangerouslySetInnerHTML={{ __html: html }}
+      />
     </Layout>
   );
 };
