@@ -5,8 +5,13 @@ import "../styles/hljs.css";
 import Navbar from "../components/Navbar";
 import Head from "next/head";
 import { Analytics } from '@vercel/analytics/react';
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
+  const router = useRouter();
+  const isRoot = router.pathname == '/';
+
   return (
     <>
       <Head>
@@ -19,7 +24,11 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <div className="antialised flex min-h-screen flex-col font-main">
-        <Navbar />
+        <div className="h-10 bg-zinc-50 border-b flex items-center justify-center fixed mb-10 w-full">
+          <Link className="font-semibold" href="/posts/hello-world">Latest post: Hello, world!</Link>
+        </div>
+        <div className="h-10" />
+        <Navbar noBorder={isRoot} />
         <Component {...pageProps} />
         <Analytics />
       </div>

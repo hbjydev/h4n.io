@@ -6,10 +6,10 @@ export const PostListing: React.FC<{ post: PostData }> = ({ post }) => {
   return (
     <Link
       href={`/posts/${post.id}`}
-      className="hover:text-fuchsia-600"
+      className="hover:shadow-lg rounded-lg hover:-translate-y-2 transition duration-200"
     >
-      <article className="flex w-full items-center justify-between py-4">
-        <span className="">{post.data['title']}</span>
+      <article className="flex flex-col w-full gap-4 justify-between p-8 border rounded-lg">
+        <span className="font-bold text-3xl">{post.data['title']}</span>
         <span className="font-light text-zinc-600">
           {post.data['date']}
         </span>

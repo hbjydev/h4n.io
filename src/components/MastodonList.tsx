@@ -1,4 +1,4 @@
-import { Emoji, Status } from "masto";
+import type { Emoji, Status } from "masto";
 import Image from "next/image";
 import React from "react";
 import { trpc } from "../utils/trpc";

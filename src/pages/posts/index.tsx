@@ -19,12 +19,11 @@ const Posts: NextPage<{ postMeta: PostData[] }> = ({
 }) => {
   return (
     <Layout title="Posts" thin>
-      <PageHeader
-        title="Posts"
-        subtitle={`Showing ${postMeta.length} post(s).`}
-      />
+      <div className="border-b text-black flex justify-between pb-5 mb-10">
+        <h1 className="text-3xl font-bold">All posts</h1>
+      </div>
 
-      <div className="flex w-full flex-col divide-y divide-zinc-300">
+      <div className="flex w-full gap-6 flex-col">
         {postMeta.map((v, i) => {
           return <PostListing post={v} key={i} />;
         })}
