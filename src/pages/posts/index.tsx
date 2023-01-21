@@ -18,7 +18,7 @@ const Posts: NextPage<{ postMeta: PostData[] }> = ({
   postMeta,
 }) => {
   return (
-    <Layout title="Posts" thin>
+    <Layout title="Posts" thin className="px-6">
       <div className="border-b text-black flex justify-between pb-5 mb-10">
         <h1 className="text-3xl font-bold">All posts</h1>
       </div>

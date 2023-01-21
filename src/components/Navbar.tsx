@@ -42,7 +42,7 @@ const Navbar: React.FC<{ border?: boolean }> = ({ border }) => {
 
     const setMenuOff = () => setMenuOpen(false);
 
-    let rootClass = 'fixed top-0 flex h-20 w-full items-center md:hidden text-zinc-900';
+    let rootClass = 'fixed flex h-20 w-full items-center md:hidden text-zinc-900 backdrop-blur-[5px] bg-white bg-opacity-[0.8] backdrop-saturate-[180%] md:flex transition-all duration-200';
     if (menuOpen) rootClass += ' bg-white';
     else rootClass += ' backdrop-blue-lg';
 
