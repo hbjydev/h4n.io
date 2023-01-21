@@ -6,7 +6,7 @@ import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
 import { FaLinkedin } from "@react-icons/all-files/fa/FaLinkedin";
 import { useToggle } from "../utils/hooks/useToggle";
 import Link from "next/link";
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "./Container";
 
 const NavbarLink: React.FC<{ label: string; href: string, toggleMenu: () => void }> = ({
@@ -32,7 +32,7 @@ const Navbar: React.FC<{ border?: boolean }> = ({ border }) => {
 
     const hasScrolled = () => setBorderShown(window.scrollY > 0);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         document.addEventListener('scroll', hasScrolled);
         return () => document.removeEventListener('scroll', hasScrolled);
     });
