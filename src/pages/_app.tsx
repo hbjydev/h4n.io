@@ -5,13 +5,9 @@ import "../styles/hljs.css";
 import Navbar from "../components/Navbar";
 import Head from "next/head";
 import { Analytics } from '@vercel/analytics/react';
-import { useRouter } from "next/router";
 import Link from "next/link";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
-  const router = useRouter();
-  const isRoot = router.pathname == '/';
-
   return (
     <>
       <Head>
@@ -28,7 +24,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           <Link className="font-semibold" href="/posts/hello-world">Latest post: Hello, world!</Link>
         </div>
         <div className="h-10" />
-        <Navbar noBorder={isRoot} />
+        <Navbar />
         <Component {...pageProps} />
         <Analytics />
       </div>
