@@ -45,16 +45,18 @@ const MastodonList: React.FC = () => {
 }
 
 export const MastodonStatus: React.FC<{ status: Status }> = ({ status }) => {
-  const { content: statusContent, account, url } = status;
+  const { content: statusContent, account } = status;
 
   let content = statusContent;
   if (content.length > 128) {
     content = content.substring(0, 128) + "...";
   }
 
-  const username = reactStringReplace(account.displayName, emojiShortcode, (match, i) => {
-    return emojiFromShortcode(match, account.emojis);
-  });
+  const username = reactStringReplace(
+    account.displayName,
+    emojiShortcode,
+    match => emojiFromShortcode(match, account.emojis)
+  );
 
   return (
     <a
