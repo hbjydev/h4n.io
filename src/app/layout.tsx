@@ -12,6 +12,7 @@ import { Inter } from '@next/font/google';
 
 import "../styles/globals.css";
 import "../styles/hljs.css";
+import { DesktopNavbar } from '../components/navbar/Desktop';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -27,7 +28,7 @@ const RootLayout: FC<{ children: ReactNode | ReactNode[] }> = ({ children }) => 
         </div>
         <div className="h-10" />
 
-        <Navbar />
+        <DesktopNavbar />
 
         <main className="my-6 flex flex-grow flex-col items-center overflow-y-hidden">
           {children}
