@@ -1,7 +1,6 @@
 import { type NextPage } from "next";
 import { Button, LinkButton } from "../components/Button";
 import Layout from "../components/Layout";
-import MastodonList from "../components/MastodonList";
 
 const Home: NextPage = () => {
   return (

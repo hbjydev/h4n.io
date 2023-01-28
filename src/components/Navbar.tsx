@@ -42,14 +42,14 @@ const Navbar: React.FC<{ border?: boolean }> = ({ border }) => {
 
     const setMenuOff = () => setMenuOpen(false);
 
-    let rootClass = 'fixed flex h-20 w-full items-center md:hidden text-zinc-900 backdrop-blur-[5px] bg-white bg-opacity-[0.8] backdrop-saturate-[180%] md:flex transition-all duration-200';
+    let rootClass = 'fixed flex h-20 w-full items-center md:hidden text-zinc-900 backdrop-blur-[5px] bg-white bg-opacity-[0.8] backdrop-saturate-[180%] md:flex transition-all duration-200 z-50';
     if (menuOpen) rootClass += ' bg-white';
     else rootClass += ' backdrop-blue-lg';
 
     if (borderShown || border) rootClass += ' border-b border-zinc-200';
     else rootClass += ' border-b border-transparent';
 
-    let rootClassDesktop = 'fixed hidden h-16 min-w-full items-center justify-center text-zinc-900 backdrop-blur-[5px] bg-white bg-opacity-[0.8] backdrop-saturate-[180%] md:flex transition-all duration-200';
+    let rootClassDesktop = 'fixed hidden h-16 min-w-full items-center justify-center text-zinc-900 backdrop-blur-[5px] bg-white bg-opacity-[0.8] backdrop-saturate-[180%] md:flex transition-all duration-200 z-50';
 
     if (borderShown || border) rootClassDesktop += ' border-b border-zinc-200';
     else rootClassDesktop += ' border-b border-transparent';
