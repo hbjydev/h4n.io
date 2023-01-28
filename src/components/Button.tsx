@@ -1,6 +1,9 @@
-import { cva, VariantProps } from 'class-variance-authority';
-import Link, { LinkProps } from 'next/link';
-import React, { HTMLAttributes, ReactNode } from 'react';
+import type { VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
+import type { LinkProps } from 'next/link';
+import Link from 'next/link';
+import type { HTMLAttributes, ReactNode } from 'react';
+import React from 'react';
 
 const button = cva(
     "rounded-lg relative font-semibold shadow-lg transition-shadow duration-200 hover:shadow-xl p-[1px]",
