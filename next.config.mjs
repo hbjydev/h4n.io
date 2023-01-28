@@ -19,7 +19,10 @@ const config = withAxiom({
     remotePatterns: [
       { protocol: 'https', hostname: 'media.hachyderm.io' }
     ],
-  }
+  },
+  experimental: {
+    appDir: true,
+  },
 });
 
 export default config;

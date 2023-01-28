@@ -1,3 +1,5 @@
+'use client';
+
 import { HiMenu } from "@react-icons/all-files/hi/HiMenu";
 import { HiX } from "@react-icons/all-files/hi/HiX";
 import { FaGithub } from "@react-icons/all-files/fa/FaGithub";

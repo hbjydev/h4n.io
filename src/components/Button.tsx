@@ -8,6 +8,7 @@ const button = cva(
         variants: {
             intent: {
                 default: "bg-zinc-900 shadow-zinc-200 hover:shadow-zinc-200 border-zinc-900",
+
                 primary: `
                     bg-gradient-to-br
                     from-purple-500
@@ -44,7 +45,8 @@ const buttonInner = cva(
     {
         variants: {
             intent: {
-                default: "text-white text-zinc-900 hover:text-zinc-900 hover:bg-white",
+                default: "",
+
                 primary: "text-zinc-900",
 
                 success: "text-zinc-900",
@@ -69,6 +71,17 @@ const buttonInner = cva(
             },
             {
                 intent: "primary",
+                outline: false,
+                className: "text-white hover:text-zinc-900",
+            },
+
+            {
+                intent: "default",
+                outline: true,
+                className: "hover:text-white text-zinc-900",
+            },
+            {
+                intent: "default",
                 outline: false,
                 className: "text-white hover:text-zinc-900",
             },
