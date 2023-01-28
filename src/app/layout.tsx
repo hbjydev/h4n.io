@@ -19,7 +19,7 @@ const inter = Inter({
 });
 
 const RootLayout: FC<{ children: ReactNode | ReactNode[] }> = ({ children }) => {
-  let wrapper = 'container flex flex-col px-6'
+  const wrapper = 'container flex flex-col px-6'
 
   return (
     <html lang="en">
