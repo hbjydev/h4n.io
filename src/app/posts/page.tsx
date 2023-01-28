@@ -1,23 +1,11 @@
-import type { GetStaticProps, NextPage } from "next";
-import Layout from "../../components/Layout";
 import { PostListing } from "../../components/PostListing";
-import { getAllPostMeta, type PostData } from "../../utils/posts";
+import { getAllPostMeta } from "../../utils/posts";
 
-export const getStaticProps: GetStaticProps = async () => {
+const Posts = () => {
   const postMeta = getAllPostMeta();
 
-  return {
-    props: {
-      postMeta,
-    },
-  };
-};
-
-const Posts: NextPage<{ postMeta: PostData[] }> = ({
-  postMeta,
-}) => {
   return (
-    <Layout title="Posts" thin className="px-6">
+    <div className="my-20 max-w-screen-sm mx-auto w-full">
       <div className="border-b text-black flex justify-between pb-5 mb-10">
         <h1 className="text-3xl font-bold">All posts</h1>
       </div>
@@ -27,7 +15,7 @@ const Posts: NextPage<{ postMeta: PostData[] }> = ({
           return <PostListing post={v} key={i} />;
         })}
       </div>
-    </Layout>
+    </div>
   );
 };
 

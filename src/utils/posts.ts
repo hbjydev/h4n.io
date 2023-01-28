@@ -25,11 +25,7 @@ export function getAllPostIds() {
   const fileNames = readdirSync(postsDir);
 
   return fileNames.map((fileName) => {
-    return {
-      params: {
-        id: fileName.replace(/\.md$/, ""),
-      },
-    };
+    return { id: fileName.replace(/\.md$/, "") };
   });
 }
 

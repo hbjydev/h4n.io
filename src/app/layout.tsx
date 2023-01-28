@@ -19,8 +19,6 @@ const inter = Inter({
 });
 
 const RootLayout: FC<{ children: ReactNode | ReactNode[] }> = ({ children }) => {
-  const wrapper = 'container flex flex-col px-6'
-
   return (
     <html lang="en">
       <body className={`flex flex-col min-h-screen ${inter.className}`}>
@@ -32,9 +30,7 @@ const RootLayout: FC<{ children: ReactNode | ReactNode[] }> = ({ children }) => 
         <Navbar />
 
         <main className="my-6 flex flex-grow flex-col items-center overflow-y-hidden">
-          <div className={wrapper}>
-            {children}
-          </div>
+          {children}
         </main>
 
         <footer className="py-10 text-sm bg-zinc-50 border-t text-zinc-600">
