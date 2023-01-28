@@ -1,6 +1,5 @@
 import type { GetStaticProps, NextPage } from "next";
 import Layout from "../../components/Layout";
-import { PageHeader } from "../../components/PageHeader";
 import { PostListing } from "../../components/PostListing";
 import { getAllPostMeta, type PostData } from "../../utils/posts";
 
