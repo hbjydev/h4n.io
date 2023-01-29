@@ -52,7 +52,7 @@ export const DesktopNavbar: React.FC = () => {
             <span>Posts</span>
           </Link>
 
-          <Link href="#" className="flex items-center gap-2 hover:text-zinc-900 hover:underline hover:underline-offset-8">
+          <Link href="/about" className="flex items-center gap-2 hover:text-zinc-900 hover:underline hover:underline-offset-8">
             <VscInfo />
             <span>About</span>
           </Link>

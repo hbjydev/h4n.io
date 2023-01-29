@@ -1,4 +1,4 @@
-import { Button, LinkButton } from "../components/Button";
+import { LinkButton } from "../components/Button";
 
 const Page = () => {
   return (
@@ -14,7 +14,7 @@ const Page = () => {
 
       <div className="flex items-center gap-6">
         <LinkButton href="/posts">Read what I have to say</LinkButton>
-        <Button intent="primary" outline>Look at my About page</Button>
+        <LinkButton href="/about" intent="primary" outline>Look at my About page</LinkButton>
       </div>
     </div>
   );
