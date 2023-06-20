@@ -14,15 +14,7 @@ const config = withAxiom({
   i18n: {
     locales: ["en"],
     defaultLocale: "en",
-  },
-  images: {
-    remotePatterns: [
-      { protocol: 'https', hostname: 'media.hachyderm.io' }
-    ],
-  },
-  experimental: {
-    appDir: true,
-  },
+  }
 });
 
 export default config;
