@@ -1,5 +1,3 @@
-'use client';
-
 export default function NotFound() {
   return (
     <div className="w-full flex flex-col my-10">
