@@ -1,18 +1,16 @@
-import Link from "next/link";
-import React from "react";
-import type { PostData } from "../utils/posts";
+import Link from 'next/link';
+import React from 'react';
+import type { Post } from '../utils/posts';
 
-export const PostListing: React.FC<{ post: PostData }> = ({ post }) => {
+export const PostListing: React.FC<{ post: Post }> = ({ post }) => {
   return (
     <Link
       href={`/posts/${post.id}`}
-      className="hover:z-10 hover:shadow-lg rounded-lg transition duration-200"
+      className="rounded-lg transition duration-200 hover:z-10 hover:shadow-lg"
     >
-      <article className="flex flex-col w-full gap-4 justify-between p-8 border rounded-lg">
-        <span className="font-bold text-3xl">{post.data['title']}</span>
-        <span className="font-light text-zinc-600">
-          {post.data['date']}
-        </span>
+      <article className="flex w-full flex-col justify-between gap-4 rounded-lg border p-8">
+        <span className="text-3xl font-bold">{post.title}</span>
+        <span className="font-light text-zinc-600">{post.date}</span>
       </article>
     </Link>
   );

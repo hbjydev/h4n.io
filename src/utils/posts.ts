@@ -1,74 +1,67 @@
-import { readdirSync, readFileSync } from "fs";
-import path from "path";
-import { unified } from "unified";
-import matter from "gray-matter";
-import remarkRehype from "remark-rehype";
-import remarkParse from "remark-parse/lib";
-import rehypeFormat from "rehype-format";
-import rehypeStringify from "rehype-stringify/lib";
-import rehypeHighlight from "rehype-highlight";
+import { readdirSync, readFileSync } from 'fs';
+import path from 'path';
+import matter from 'gray-matter';
+import { remark } from 'remark';
+import html from 'remark-html';
+// import remarkRehype from 'remark-rehype';
+// import remarkParse from 'remark-parse/lib';
+// import rehypeFormat from 'rehype-format';
+// import rehypeStringify from 'rehype-stringify/lib';
+// import rehypeHighlight from 'rehype-highlight';
 
-export type PostData = {
+export type Post = {
   id: string;
-  data: matter.GrayMatterFile<string>["data"];
-};
-
-export type PostFrontmatter = {
   title: string;
   date: string;
-  tags?: string[];
+  tags: string[];
 };
 
-const postsDir = "posts";
+const postsDir = path.join(process.cwd(), 'posts');
 
-export function getAllPostIds() {
+export const getSortedPostsData = (): Post[] => {
   const fileNames = readdirSync(postsDir);
+  const allPostData = fileNames.map((fileName) => {
+    const id = fileName.replace(/\.md$/, '');
 
-  return fileNames.map((fileName) => {
-    return { id: fileName.replace(/\.md$/, "") };
+    const fullPath = path.join(postsDir, fileName);
+    const fileContents = readFileSync(fullPath, 'utf8');
+
+    const matterResult = matter(fileContents);
+
+    const post: Post = {
+      id,
+      title: matterResult.data.title,
+      date: matterResult.data.date,
+      tags: matterResult.data.tags ?? [],
+    };
+
+    return post;
   });
-}
 
-export function getAllPostMeta() {
-  const fileNames = readdirSync(postsDir);
-  const data: PostData[] = [];
-
-  for (const name of fileNames) {
-    const filePath = path.join(postsDir, `${name}`);
-    const matterData = matter.read(filePath);
-    data.push({
-      id: name.replace(/\.md$/, ""),
-      data: matterData.data,
-    });
-  }
-
-  data.sort(
-    (o, t) =>
-      new Date(t.data["date"]).getTime() - new Date(o.data["date"]).getTime()
-  );
-
-  return data;
-}
+  return allPostData.sort((a, b) => a.date < b.date ? 1 : -1);
+};
 
 export async function getPostData(id: string) {
   const fullPath = path.join(postsDir, `${id}.md`);
-  const fileContents = readFileSync(fullPath, "utf8");
+  const fileContents = readFileSync(fullPath, 'utf8');
 
   const matterResult = matter(fileContents);
 
-  const result = await unified()
-    .use(remarkParse)
-    .use(remarkRehype)
-    .use(rehypeHighlight)
-    .use(rehypeFormat)
-    .use(rehypeStringify)
+  const result = await remark()
+    // .use(remarkRehype)
+    // .use(rehypeHighlight)
+    // .use(rehypeFormat)
+    // .use(rehypeStringify)
+    .use(html)
     .process(matterResult.content);
 
-  const html = result.toString();
-
-  return {
-    id,
-    html,
-    frontmatter: matterResult.data,
+  const postWithHtml: Post & { contentHtml: string } = {
+      id,
+      title: matterResult.data.title,
+      date: matterResult.data.date,
+      tags: matterResult.data.tags ?? [],
+      contentHtml: result.toString(),
   };
+
+  return postWithHtml;
 }

@@ -1,23 +1,28 @@
 import Link from 'next/link';
 import type { FC, ReactNode } from 'react';
 import { Container } from '../components/Container';
-import Navbar from '../components/Navbar';
 
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
 import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin';
 import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon';
 import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
 
-import { Inter } from '@next/font/google';
+import { Inter } from 'next/font/google';
 
 import "../styles/globals.css";
 import "../styles/hljs.css";
 import { DesktopNavbar } from '../components/navbar/Desktop';
+import type { Metadata } from 'next';
 
 const inter = Inter({
   subsets: ['latin'],
   display: 'optional',
 });
+
+export const metadata: Metadata = {
+  title: `Hayden's Blog`,
+  description: `Kubernetes addict & polyglot software engineer`,
+};
 
 const RootLayout: FC<{ children: ReactNode | ReactNode[] }> = ({ children }) => {
   return (

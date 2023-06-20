@@ -1,8 +1,8 @@
 import { PostListing } from "../../components/PostListing";
-import { getAllPostMeta } from "../../utils/posts";
+import { getSortedPostsData } from "../../utils/posts";
 
 const Posts = () => {
-  const postMeta = getAllPostMeta();
+  const postMeta = getSortedPostsData();
 
   return (
     <div className="my-20 max-w-screen-sm mx-auto w-full">
