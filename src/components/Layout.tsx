@@ -1,10 +1,10 @@
-import Head from "next/head";
-import { Container } from "../components/Container";
-import React from "react";
-import { FaGithub } from "@react-icons/all-files/fa/FaGithub";
-import { FaMastodon } from "@react-icons/all-files/fa/FaMastodon";
-import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter";
-import { FaLinkedin } from "@react-icons/all-files/fa/FaLinkedin";
+import Head from 'next/head';
+import { Container } from '../components/Container';
+import React from 'react';
+import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
+import { FaMastodon } from '@react-icons/all-files/fa/FaMastodon';
+import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
+import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin';
 
 const Layout: React.FC<{
   children?: React.ReactNode | React.ReactNode[];
@@ -30,18 +30,24 @@ const Layout: React.FC<{
           name="description"
           content="Hayden Young — a DevOps engineer based in Sheffield, UK."
         />
-        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="icon"
+          href="/favicon.ico"
+        />
       </Head>
-      <main className={`${noTopPad ? 'my-6' : 'my-20'} flex flex-grow flex-col items-center overflow-y-hidden`}>
-        <div className={wrapper}>
-          {children}
-        </div>
+      <main
+        className={`${noTopPad ? 'my-6' : 'my-20'
+          } flex flex-grow flex-col items-center overflow-y-hidden`}
+      >
+        <div className={wrapper}>{children}</div>
       </main>
 
-      <footer className="py-10 text-sm bg-zinc-50 border-t text-zinc-600">
+      <footer className="border-t bg-zinc-50 py-10 text-sm text-zinc-600">
         <Container>
           <div className="flex justify-between">
-            <span>Copyright &copy; Hayden Young {(new Date()).getFullYear()}.</span>
+            <span>
+              Copyright &copy; Hayden Young {new Date().getFullYear()}.
+            </span>
 
             <div className="flex items-center gap-x-6">
               <a

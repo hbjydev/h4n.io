@@ -10,10 +10,12 @@ export default function GlobalError({
   console.log(error);
 
   return (
-    <div className="w-full flex flex-col my-10">
+    <div className="my-10 flex w-full flex-col">
       <h1 className="text-5xl font-bold">500</h1>
-      <h2 className="text-zinc-600 text-2xl">That means something went wrong on our side. Try again soon!</h2>
-      <p className="text-zinc-600 text-base">{error.message}</p>
+      <h2 className="text-2xl text-zinc-600">
+        That means something went wrong on our side. Try again soon!
+      </h2>
+      <p className="text-base text-zinc-600">{error.message}</p>
 
       <button onClick={() => reset()}>Try again</button>
     </div>

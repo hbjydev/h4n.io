@@ -20,7 +20,7 @@ const postsDir = path.join(process.cwd(), 'posts');
 
 export const getSortedPostsData = (): Post[] => {
   const fileNames = readdirSync(postsDir);
-  const allPostData = fileNames.map((fileName) => {
+  const allPostData = fileNames.map(fileName => {
     const id = fileName.replace(/\.md$/, '');
 
     const fullPath = path.join(postsDir, fileName);
@@ -38,7 +38,7 @@ export const getSortedPostsData = (): Post[] => {
     return post;
   });
 
-  return allPostData.sort((a, b) => a.date < b.date ? 1 : -1);
+  return allPostData.sort((a, b) => (a.date < b.date ? 1 : -1));
 };
 
 export async function getPostData(id: string) {
@@ -56,11 +56,11 @@ export async function getPostData(id: string) {
     .process(matterResult.content);
 
   const postWithHtml: Post & { contentHtml: string } = {
-      id,
-      title: matterResult.data.title,
-      date: matterResult.data.date,
-      tags: matterResult.data.tags ?? [],
-      contentHtml: result.toString(),
+    id,
+    title: matterResult.data.title,
+    date: matterResult.data.date,
+    tags: matterResult.data.tags ?? [],
+    contentHtml: result.toString(),
   };
 
   return postWithHtml;

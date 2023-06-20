@@ -1,18 +1,23 @@
-import { PostListing } from "../../components/PostListing";
-import { getSortedPostsData } from "../../utils/posts";
+import { PostListing } from '../../components/PostListing';
+import { getSortedPostsData } from '../../utils/posts';
 
 const Posts = () => {
   const postMeta = getSortedPostsData();
 
   return (
-    <div className="my-20 max-w-screen-sm mx-auto w-full">
-      <div className="border-b text-black flex justify-between pb-5 mb-10">
+    <div className="mx-auto my-20 w-full max-w-screen-sm">
+      <div className="mb-10 flex justify-between border-b pb-5 text-black">
         <h1 className="text-3xl font-bold">All posts</h1>
       </div>
 
-      <div className="flex w-full gap-6 flex-col">
+      <div className="flex w-full flex-col gap-6">
         {postMeta.map((v, i) => {
-          return <PostListing post={v} key={i} />;
+          return (
+            <PostListing
+              post={v}
+              key={i}
+            />
+          );
         })}
       </div>
     </div>

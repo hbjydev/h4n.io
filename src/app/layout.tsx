@@ -9,8 +9,8 @@ import { FaTwitter } from '@react-icons/all-files/fa/FaTwitter';
 
 import { Inter } from 'next/font/google';
 
-import "../styles/globals.css";
-import "../styles/hljs.css";
+import '../styles/globals.css';
+import '../styles/hljs.css';
 import { DesktopNavbar } from '../components/navbar/Desktop';
 import type { Metadata } from 'next';
 
@@ -24,12 +24,19 @@ export const metadata: Metadata = {
   description: `Kubernetes addict & polyglot software engineer`,
 };
 
-const RootLayout: FC<{ children: ReactNode | ReactNode[] }> = ({ children }) => {
+const RootLayout: FC<{ children: ReactNode | ReactNode[] }> = ({
+  children,
+}) => {
   return (
     <html lang="en">
-      <body className={`flex flex-col min-h-screen ${inter.className}`}>
-        <div className="h-10 bg-zinc-50 border-b flex items-center justify-center fixed mb-10 w-full">
-          <Link className="font-semibold" href="/posts/hello-world">Latest post: Hello, world!</Link>
+      <body className={`flex min-h-screen flex-col ${inter.className}`}>
+        <div className="fixed mb-10 flex h-10 w-full items-center justify-center border-b bg-zinc-50">
+          <Link
+            className="font-semibold"
+            href="/posts/hello-world"
+          >
+            Latest post: Hello, world!
+          </Link>
         </div>
         <div className="h-10" />
 
@@ -39,10 +46,12 @@ const RootLayout: FC<{ children: ReactNode | ReactNode[] }> = ({ children }) => 
           {children}
         </main>
 
-        <footer className="py-10 text-sm bg-zinc-50 border-t text-zinc-600">
+        <footer className="border-t bg-zinc-50 py-10 text-sm text-zinc-600">
           <Container>
             <div className="flex justify-between">
-              <span>Copyright &copy; Hayden Young {(new Date()).getFullYear()}.</span>
+              <span>
+                Copyright &copy; Hayden Young {new Date().getFullYear()}.
+              </span>
 
               <div className="flex items-center gap-x-6">
                 <a
@@ -80,6 +89,6 @@ const RootLayout: FC<{ children: ReactNode | ReactNode[] }> = ({ children }) => 
       </body>
     </html>
   );
-}
+};
 
 export default RootLayout;

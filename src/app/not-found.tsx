@@ -1,8 +1,10 @@
 export default function NotFound() {
   return (
-    <div className="w-full flex flex-col my-10">
+    <div className="my-10 flex w-full flex-col">
       <h1 className="text-5xl font-bold">404</h1>
-      <h2 className="text-zinc-600 text-2xl">The page you requested was not found. :L</h2>
+      <h2 className="text-2xl text-zinc-600">
+        The page you requested was not found. :L
+      </h2>
     </div>
   );
 }
