@@ -58,7 +58,7 @@ const Layout: React.FC<{
               </a>
 
               <a
-                href="https://hachyderm.io/@hayden"
+                href="https://hbjy.io/@hayden"
                 className="hover:text-purple-500"
                 rel="me"
               >
